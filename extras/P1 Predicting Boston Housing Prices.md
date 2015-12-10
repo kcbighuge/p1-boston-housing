@@ -9,13 +9,13 @@
 > 13
 
 * Minimum and maximum housing prices?
-> \$5,000 - \$50,000
+> $5,000 - $50,000
 
 * Mean and median Boston housing prices?
-> mean \$22,532 and median \$21,200
+> mean $22,532 and median $21,200
 
 * Standard deviation?
-> \$9,188
+> $9,188
 
 
 ## 2. Evaluating Model Performance
@@ -49,5 +49,10 @@
 
 ## 4. Model Prediction
 * Model makes predicted housing price with detailed model parameters (max depth) reported using grid search. Note due to the small randomization of the code it is recommended to run the program several times to identify the most common/reasonable price/model complexity.
+
 * Compare prediction to earlier statistics and make a case if you think it is a valid model.
-> The model generally gives a prediction price in the $19,000 -$22,000 range, which is within the dataset's range of prices as well as 1 sd of the mean price. The model appears to be valid.
+> The model generally gives a prediction price in the $19,000 -$22,000 range, which is within the dataset's range of prices and wihtin 1 sd of the mean price. 
+> The model appears to be valid.
+
+
+--
