@@ -9,13 +9,13 @@
 > 13
 
 * Minimum and maximum housing prices?
-> $5,000 - $50,000
+> 5.0 - 50.0 (value in 000's)
 
 * Mean and median Boston housing prices?
-> mean $22,532 and median $21,200
+> mean 22.533 and median 21.2
 
 * Standard deviation?
-> $9,188
+> 9.188
 
 
 ## 2. Evaluating Model Performance
@@ -44,14 +44,14 @@
 > The low max depth model is likely underfitting the data and suffering from high bias, resulting in both higher training and test error compared to the high max depth model. The high max depth is likely overfitting given the greater discrepancy between training and test error.
 
 * Look at the model complexity graph. How do the training and test error relate to increasing model complexity? Based on this relationship, which model (max depth) best generalizes the dataset and why?
-> Increasing model complexity reduces training error toward zero, but test error fluctuates in a range around 30-40. A model with depth 2 best generalizes the dataset because the training and test error are close to each other, while the test error is still near its lowest point.
+> Increasing model complexity reduces training error toward zero, but test error fluctuates in a range around 30-40. A model with depth 5 best generalizes the dataset because it generates test error at (or near to) the low point in the model complexity graph, and doesn't overfit the data.
 
 
 ## 4. Model Prediction
 * Model makes predicted housing price with detailed model parameters (max depth) reported using grid search. Note due to the small randomization of the code it is recommended to run the program several times to identify the most common/reasonable price/model complexity.
 
 * Compare prediction to earlier statistics and make a case if you think it is a valid model.
-> The model generally gives a prediction price in the $19,000 -$22,000 range, which is within the dataset's range of prices and wihtin 1 sd of the mean price. 
+> The model generally gives a prediction in the 19.0 - 22.0 range, which is within the dataset's range of prices and wihtin 1 sd of the mean price. 
 > The model appears to be valid.
 
 

@@ -184,13 +184,13 @@ def fit_predict_model(city_data):
     # Fit the learner to the training data
     print "Final Model: "
     print reg.fit(X, y)
-    print reg.best_estimator_
-    print reg.best_score_
-    print reg.best_params_
 
     # Use the model to predict the output of a particular sample
+    # Call predict on estimator with best found parameters
+    # http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV.predict
     x = [11.95, 0.00, 18.100, 0, 0.6590, 5.6090, 90.00, 1.385, 24, 680.0, 20.20, 332.09, 12.13]
     y = reg.predict(x)
+
     print "House: " + str(x)
     print "Prediction: " + str(y)
 
