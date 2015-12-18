@@ -12,6 +12,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn import grid_search
 from sklearn import cross_validation
 from sklearn import metrics
+from sklearn.neighbors import NearestNeighbors
 
 def load_data():
     """Load the Boston dataset."""
@@ -181,19 +182,41 @@ def fit_predict_model(city_data):
     # http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV
     reg = grid_search.GridSearchCV(regressor, parameters, scoring=mse_scorer, cv=None)
 
+    # RandomizedSearchCV: a fixed num of parameter settings sampled from specified distributions
+    # scikit-learn.org/.../sklearn.grid_search.RandomizedSearchCV.html#sklearn.grid_search.RandomizedSearchCV
+
     # Fit the learner to the training data
     print "Final Model: "
     print reg.fit(X, y)
+
+    # Retrieve the best estimator found by GridSearchCV.
+    est = reg.best_estimator_
 
     # Use the model to predict the output of a particular sample
     # Call predict on estimator with best found parameters
     # http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV.predict
     x = [11.95, 0.00, 18.100, 0, 0.6590, 5.6090, 90.00, 1.385, 24, 680.0, 20.20, 332.09, 12.13]
-    y = reg.predict(x)
+    # y = reg.predict(x)
+
+    # Use the object 'est' to make a prediction instead of grid search object
+    y = est.predict(x)
 
     print "House: " + str(x)
     print "Prediction: " + str(y)
+    print "------------"
 
+    indexes = find_nearest_neighbor_indexes(x, city_data.data)
+    sum_prices = []
+    for i in indexes:
+        sum_prices.append(city_data.target[i])
+    neighbor_avg = np.mean(sum_prices)
+    print "Nearest Neighbors average: " +str(neighbor_avg)
+
+def find_nearest_neighbor_indexes(x, X):  # x is your vector and X is the data set
+   neigh = NearestNeighbors( n_neighbors = 10 )
+   neigh.fit( X)
+   distance, indexes = neigh.kneighbors( x )
+   return indexes
 
 def main():
     """Analyze the Boston housing data. Evaluate and validate the
