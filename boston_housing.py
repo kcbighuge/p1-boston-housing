@@ -190,6 +190,7 @@ def fit_predict_model(city_data):
     print reg.fit(X, y)
 
     # Retrieve the best estimator found by GridSearchCV.
+    reg.fit(X, y)
     est = reg.best_estimator_
 
     # Use the model to predict the output of a particular sample
